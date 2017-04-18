@@ -1,0 +1,12 @@
+install npm from the website
+npm --version
+npm init -y (puts the package.json file in the folder i want)
+
+
+npm install express --save
+
+/* alternative: */
+npm install --savedev (for development)
+
+* When it's time to push, only push up package.json (not node_modules)
+* include instructions 

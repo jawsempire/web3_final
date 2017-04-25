@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+
+  <style media="screen">
+    .hangmanshape {
+      position: absolute;
+      top:85px;
+      left: 200px;
+      animation: swing 3s linear 2s infinite alternate;
+      visibility: hidden;
+    }
+    .body {
+      position: absolute;
+      left:50px;
+      top:105px;
+
+    }
+    .lhand {
+      position: absolute;
+      left:-45px;
+      top:175px;
+      -webkit-transform: rotate(-30deg); /* Chrome, Safari, Opera */
+      transform: rotate(-30deg);
+    }
+    .rhand {
+      position: absolute;
+      left:45px;
+      top:175px;
+      -webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+      transform: rotate(30deg);
+    }
+    .lleg {
+      position: absolute;
+      left:-40px;
+      top:310px;
+      -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+      transform: rotate(-90deg);
+    }
+    .rleg {
+      position: absolute;
+      left:55px;
+      top:290px;
+      -webkit-transform: rotate(185deg); /* Chrome, Safari, Opera */
+      transform: rotate(185deg);
+    }
+    .dorsal {
+      position: absolute;
+      left:55px;
+      top:515px;
+      animation: circling 3s linear 2s infinite ;
+    }
+
+    @keyframes swing {
+      0%   {transform:rotate(5deg);}
+      100% {transform:rotate(-5deg);}
+   }
+
+    @keyframes circling {
+      0%   {left:55px;   transform:rotateY(0deg);}
+      49%  {left:335px;   transform:rotateY(0deg);}
+      50%   {left:350px;   transform:rotateY(180deg);}
+      99%  {left:40px;   transform:rotateY(180deg);}
+      100%   {left:55px;   transform:rotateY(0deg);}
+    }
+
+
+  </style>
+  <body>
+    <div class="hangman_images">
+      <div class="noose">
+        <img src="noose.png" alt="" style=" height:600px">
+      </div>
+      <div class="hangmanshape">
+        <div class="head" id="head">
+          <img src="head.png" alt="" style=" width:125px">
+        </div>
+        <div class="body" id="body">
+          <img src="body.png" alt="" style=" height:225px">
+        </div>
+        <div class="lhand" id="lhand">
+          <img src="arm1.png" alt="" style=" width:125px">
+        </div>
+        <div class="rhand" id="rhand">
+          <img src="arm2.png" alt="" style=" width:125px">
+        </div>
+        <div class="lleg" id="lleg">
+          <img src="foot.png" alt="" style=" width:120px">
+        </div>
+        <div class="rleg" id="rleg">
+          <img src="foot2.png" alt="" style=" width:130px">
+        </div>
+      </div>
+    </div>
+
+    <div class="dorsal">
+      <img src="dorsal.png" alt="" style=" width:210px" >
+    </div>
+
+    <br><br><br>
+
+    <button type="button" name="button" id="head" onclick="show(this)">head</button>
+    <button type="button" name="button" id="body" onclick="show(this)">body</button>
+    <button type="button" name="button" id="lhand" onclick="show(this)">lhand</button>
+    <button type="button" name="button" id="rhand" onclick="show(this)">rhand</button>
+    <button type="button" name="button" id="lleg" onclick="show(this)">lleg</button>
+    <button type="button" name="button" id="rleg" onclick="show(this)">rleg</button>
+
+  </body>
+
+  <script type="text/javascript">
+
+    function show(t) {
+      document.getElementById(t.id).style.visibility = "visible";
+    }
+  </script>
+</html>

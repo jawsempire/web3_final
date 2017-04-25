@@ -1,0 +1,113 @@
+
+body {
+    /*padding: 20px 40px;*/
+    font-family: "Verdana";
+    background-color: darkgray;
+}
+
+h1 {
+    margin: 20px;
+}
+
+*{
+    text-align: center;
+}
+
+.secretWord {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    font-size: 3rem;
+}
+
+.letter-button:disabled {
+    opacity: 0.5;
+    color: black;
+}
+
+/*.navbar{*/
+    /*margin-right: 800px;*/
+/*}*/
+
+
+.hangmanshape {
+    position: absolute;
+    top:80px;
+    left: 360px;
+    animation: swing 3s linear 2s infinite alternate;
+    visibility: hidden;
+}
+.body {
+    position: absolute;
+    left:50px;
+    top:105px;
+
+}
+.lhand {
+    position: absolute;
+    left:-45px;
+    top:175px;
+    -webkit-transform: rotate(-30deg); /* Chrome, Safari, Opera */
+    transform: rotate(-30deg);
+}
+.rhand {
+    position: absolute;
+    left:45px;
+    top:175px;
+    -webkit-transform: rotate(30deg); /* Chrome, Safari, Opera */
+    transform: rotate(30deg);
+}
+.lleg {
+    position: absolute;
+    left:-40px;
+    top:310px;
+    -webkit-transform: rotate(-90deg); /* Chrome, Safari, Opera */
+    transform: rotate(-90deg);
+}
+.rleg {
+    position: absolute;
+    left:55px;
+    top:290px;
+    -webkit-transform: rotate(185deg); /* Chrome, Safari, Opera */
+    transform: rotate(185deg);
+}
+.dorsal {
+    position: absolute;
+    left:55px;
+    top:515px;
+    animation: circling 3s linear 2s infinite ;
+}
+
+@keyframes swing {
+    0%   {transform:rotate(5deg);}
+    100% {transform:rotate(-5deg);}
+}
+
+@keyframes circling {
+    0%   {left:55px;   transform:rotateY(0deg);}
+    49%  {left:335px;   transform:rotateY(0deg);}
+    50%   {left:350px;   transform:rotateY(180deg);}
+    99%  {left:40px;   transform:rotateY(180deg);}
+    100%   {left:55px;   transform:rotateY(0deg);}
+}
+.well{
+    margin-top: 20px;
+    width:500px;
+    float: right;
+}
+.letters li{
+    margin: 5px;
+    font-size: 12px;
+
+}
+.guesses{
+    margin-top: 100px;
+
+}
+
+.guessLetter{
+    font-weight: bold;
+    font-size: 35px;
+}
+.mainDiv{
+    background-color: oldlace;
+}

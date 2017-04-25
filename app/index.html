@@ -1,10 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html ng-app>
   <head>
     <meta charset="utf-8">
     <title>Web3 Final Project</title>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="controller.js"></script>
+    <link rel = "stylesheet" type = "text/css" href = "styleSheet.css" />
   </head>
-  <body>
+    <style media="screen">
+
+    </style>
+  </head>
+
+  <body ng-controller="controller">
+  <div id="wrap">
+    <div class="navbar navbar-inverse" role="navigation">
+      <!--<div class="container">-->
+        <div class="navbar-header">
+          <a class="navbar-brand">Hangman</a></div>
+          <div class="navbar-collapse">
+            <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            </ul>
+          </div>
+      <!--</div>-->
+    </div>
+  </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-1"></div>
+      <div class="col-lg-10 mainDiv">
+        <div class="row">
+          <div class="col-lg-6">
+              <div class="hangman_images">
+                <div class="noose">
+                  <img src="images/noose.png" alt="" style=" height:600px">
+                </div>
+                    <div class="hangmanshape">
+                      <div class="head" id="head" ng-style="head">
+                        <img src="images/head.png" alt="" style=" width:125px">
+                      </div>
+                      <div class="body" id="body" ng-style="body">
+                        <img src="images/body.png" alt="" style=" height:225px">
+                      </div>
+                      <div class="lhand" id="lhand" ng-style="lhand">
+                        <img src="images/arm1.png" alt="" style=" width:125px">
+                      </div>
+                      <div class="rhand" id="rhand" ng-style="rhand">
+                        <img src="images/arm2.png" alt="" style=" width:125px">
+                      </div>
+                      <div class="lleg" id="lleg" ng-style="lleg">
+                        <img src="images/foot.png" alt="" style=" width:120px">
+                      </div>
+                      <div class="rleg" id="rleg" ng-style="rleg">
+                        <img src="images/foot2.png" alt="" style=" width:130px">
+                      </div>
+                    </div>
+              </div>
+              <div class="dorsal">
+                <img src="images/dorsal.png" alt="" style=" width:210px" >
+              </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="guesses">
+              <ul class="list-inline">
+                <li ng-repeat="letter in actualWord">
+                  <span ng-hide="letter.chosen" class="guessLetter">_</span>
+                  <span ng-show="letter.chosen" class="guessLetter">{{ letter.name }}</span>
+                </li>
+              </ul>
+            </div>
+            <div class="well">
+              <div class="actualWord">
+                <div class="letters">
+                  <ul class="list-inline">
+                    <li ng-repeat="letter in letters">
+                      <button class="btn btn-primary letter-button"
+                              ng-disabled="letter.chosen"
+                              ng-click="try(letter);">{{letter.name}}</button>
+                    </li>
+                  </ul>
+                </div>
+                <p>
+                  <span ng-hide="win || lost">You have {{ guesses - wrongGuess }} guesses remaining.</span>
+                  <span ng-show="win">Well done!</span>
+                  <span ng-show="lost">Sorry, please try again!</span>
+                </p>
+              </div>
+            </div>
+            <button ng-click="reset();" class="btn btn-primary btn-large newGame">New Game</button>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-1"></div>
+    </div>
+  </div>
+
 
   </body>
 </html>

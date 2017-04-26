@@ -2,7 +2,31 @@
  * Created by FaDu on 4/18/17.
  */
 
-var controller = function($scope) {
+var controller = function($scope, $http) {
+
+  let tempwords = [];
+
+  //try setting up promises to get the rest of the code
+  //to wait for the return
+
+   wordArray = function() {
+
+    return $http.get("../json/words.json").success(function(wordArr, status) {
+     $scope.wordArr = wordArr;
+    //  console.log($scope.wordArr.fruits);
+    });
+
+
+   }
+
+  wordArray().then(function(data) {
+
+      tempwords = $scope.wordArr.fruits;
+      console.log(tempwords[2]);
+
+  });
+
+   //console.log(" the length is " + $scope.wordArr.fruits);
 
     $scope.guesses = 6;
 
@@ -122,4 +146,3 @@ var words = [
     'controller', 'terminal', 'array', 'data', 'inheritance',
     'Heroku', 'scope',  'closure'
 ];
-

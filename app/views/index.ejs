@@ -8,8 +8,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/controller.js"></script>
     <link rel = "stylesheet" type = "text/css" href = "css/styleSheet.css" />
+    <script src="js/controller.js"></script>
+
   </head>
     <style media="screen">
 
@@ -32,11 +33,31 @@
   </div>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-lg-1">
+      <div class="col-lg-3">
           <!-- add Mongo functionality here -->
-          
+
+        <h3>What Players Are Saying...</h3>
+
+          <ul class="quotes">
+
+          <% for(var i=0; i<quotes.length; i++) {%>
+            <li class="quote">
+              <span><em><%= quotes[i].name %></em></span>
+              <span>--<%= quotes[i].quote %></span>
+            </li>
+          <% } %>
+          </ul>
+          <br>
+        <h4>Add your own comments:</h4>
+          <form action="/quotes" method="POST">
+            <input type="text" placeholder="comment" name="name">
+            <br>
+            <input type="text" placeholder="name" name="quote">
+            <br><br>
+            <button type="submit">Submit</button>
+          </form>
       </div>
-      <div class="col-lg-10 mainDiv">
+      <div class="col-lg-8 mainDiv">
         <div class="row">
           <div class="col-lg-6">
               <div class="hangman_images">
@@ -106,3 +127,48 @@
 
   </body>
 </html>
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Time to Get MEAN</title>
+</head>
+
+<body>
+<h1>All Aboard the Mongo Express</h1>
+
+  <ul class="quotes">
+  <% for(var i=0; i<quotes.length; i++) {%>
+    <li class="quote">
+      <span><%= quotes[i].name %></span>
+      <span><%= quotes[i].quote %></span>
+    </li>
+  <% } %>
+  </ul>
+
+  <h4>Add quote</h4>
+
+  <form action="/quotes" method="POST">
+    <input type="text" placeholder="name" name="name">
+    <input type="text" placeholder="quote" name="quote">
+    <button type="submit">Submit</button>
+  </form>
+
+  <div>
+    <h4>Replace Quote</h4>
+    <button id="update"> Do it </button>
+  </div>
+
+<br>
+
+  <div>
+    <h4>Delete Bob Hope's quote</h4>
+    <button id="delete"> Delete quote </button>
+  </div>
+  <br>
+
+
+-->  <!--remember to put script at the bottom
+  <script src="main.js"></script>
+</body>
+</html> -->

@@ -93,7 +93,11 @@
             <div class="guesses">
               <ul class="list-inline">
                 <li ng-repeat="letter in actualWord">
-                  <span ng-hide="letter.chosen" class="guessLetter">_</span>
+                  <!--
+                  <td class="licnum"><span ng-if="participant.LicenseNumber">{{participant.LicenseNumber}}</span><span ng-if="!participant.LicenseNumber">&nbsp;</span></td>
+                  <span ng-if="participant.LicenseNumber">{{participant.LicenseNumber}}</span>
+                 -->
+                  <span ng-hide="letter.chosen" class="guessLetter">{{isValid(letter.name)}}</span>
                   <span ng-show="letter.chosen" class="guessLetter">{{ letter.name }}</span>
                 </li>
               </ul>
@@ -117,6 +121,11 @@
               </div>
             </div>
             <button ng-click="reset();" class="btn btn-primary btn-large newGame">New Game</button>
+            <br><br>
+            <button type="button" class="btn btn-large" ng-class= " {'btn-warning': catagory == 'fruits' } "name="button" ng-click="setCatagory('fruits')">Fruits</button>
+            <button type="button" name="button" class="btn btn-large" ng-class= " {'btn-warning': catagory == 'sports'}" ng-click="setCatagory('sports')">Sports Figures</button>
+            <button type="button" name="button" class="btn btn-large" ng-class= " {'btn-warning': catagory == 'pasta'}" ng-click="setCatagory('pasta')">Pasta</button>
+
           </div>
         </div>
       </div>

@@ -5,26 +5,36 @@
 var controller = function($scope, $http) {
 
   let tempwords = [];
+  var words = [];
+  $scope.catagory = "fruits";
 
-  //try setting up promises to get the rest of the code
-  //to wait for the return
+  $scope.isValid = function(testWord){
+     if (testWord == " ") return "";
+      else return "_";
+  }
 
-   wordArray = function() {
+$scope.setCatagory = function(cat){
+  $scope.catagory = cat;
+  $scope.getWords();
 
-    return $http.get("../json/words.json").success(function(wordArr, status) {
-     $scope.wordArr = wordArr;
-    //  console.log($scope.wordArr.fruits);
-    });
+}
 
+  $scope.init = function(){
+    $scope.getWords();
+  }
 
-   }
+  $scope.getWords = function(){
+    $http.get("../json/words.json")
+    .then(
+      function success(res){
+        words = res.data[$scope.catagory];
+        $scope.reset();
+      },
+      function fail(res){
 
-  wordArray().then(function(data) {
-
-      tempwords = $scope.wordArr.fruits;
-      console.log(tempwords[2]);
-
-  });
+      }
+    );
+  }
 
    //console.log(" the length is " + $scope.wordArr.fruits);
 
@@ -58,6 +68,7 @@ var controller = function($scope, $http) {
         }
     }
 
+
     $scope.reset = function() {
         _.each($scope.letters, function(letter) {
             letter.chosen = false;
@@ -85,9 +96,6 @@ var controller = function($scope, $http) {
             "visibility" : "hidden"
         }
     };
-
-    $scope.reset();
-
     $scope.try = function(guess) {
         guess.chosen = true;
         var found = false;
@@ -134,15 +142,17 @@ var controller = function($scope, $http) {
         }
         endGame();
     };
-
     $scope.letters = writeWord("abcdefghijklmnopqrstuvwxyz");
+    $scope.init();
 
 };
 
-var words = [
-    'Rails', 'AngularJS', 'Bootstrap', 'Ruby', 'JavaScript',
-    'authentication', 'function', 'array', 'object', 'sublime',
-    'github', 'agile', 'route', 'database', 'model', 'view',
-    'controller', 'terminal', 'array', 'data', 'inheritance',
-    'Heroku', 'scope',  'closure'
-];
+
+
+// var words = [
+//     'Rails', 'AngularJS', 'Bootstrap', 'Ruby', 'JavaScript',
+//     'authentication', 'function', 'array', 'object', 'sublime',
+//     'github', 'agile', 'route', 'database', 'model', 'view',
+//     'controller', 'terminal', 'array', 'data', 'inheritance',
+//     'Heroku', 'scope',  'closure'
+// ];

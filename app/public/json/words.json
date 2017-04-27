@@ -2,7 +2,25 @@
     "fruits": [
       "peach",
       "pear",
-      "plum"
+      "plum",
+      "apple",
+      "grape",
+      "pommegranite"
+    ],
+    "sports": [
+      "Michael Jordan",
+      "Muhammad Ali",
+      "Steph Curry",
+      "Serena Williams"
+    ],
+    "pasta": [
+      "linguine",
+      "spaghetti",
+      "rotini",
+      "fussili",
+      "macaroni",
+      "canneloni"
     ]
+
 
 }
